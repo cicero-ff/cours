@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Газетно-журнальное издание Литературный трибун</title>
+    </head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="images\logo.svg" alt="Логотип Литературный трибун" class="logo">
+                <div class="site-title">
+                    <h1>Литературный трибун</h1>
+                    <p class="subtitle">новое поколение читательского обзора</p>
+                </div>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="main-nav nav">
+                <div class="nav-buttons">
+                    <a href="page1.html">Главная</a>
+                    <a href="page2.html">Книги</a>
+                    <a href="page3.html">Авторы</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <div class="main-content-second">
+        <section class="bestsellers-section">
+            <h2>Бестселлеры</h2>
+            <div class="bestsellers-container">
+                <div class="book"><img src="images\book1.png" alt="Книга 1"></div>
+                <div class="book"><img src="images\book2.jpg" alt="Книга 2"></div>
+                <div class="book"><img src="images\book3.jpg" alt="Книга 3"></div>
+                <div class="book"><img src="images\book4.jpg" alt="Книга 4"></div>
+                <div class="book"><img src="images\book5.jpg" alt="Книга 5"></div>
+                <div class="book"><img src="images\book6.jpg" alt="Книга 6"></div>
+                <div class="book"><img src="images\book7.jpg" alt="Книга 7"></div>
+                <div class="book"><img src="images\book8.jpg" alt="Книга 8"></div>
+                <div class="book"><img src="images\book9.jpg" alt="Книга 9"></div>
+                <div class="book"><img src="images\book10.jpg" alt="Книга 10"></div>
+                <div class="book"><img src="images\book11.jpg" alt="Книга 11"></div>
+                <div class="book"><img src="images\book12.jpg" alt="Книга 12"></div>
+            </div>
+        </section>
+
+        <div class="lower-sections">
+            <section class="recommendation-form-section">
+                <h2>Не знаете, что почитать? Заполните форму!</h2>
+                <form id="recommendation-form">
+                    <label for="name">Ваше имя:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="favorite-genre">Ваш любимый жанр:</label><br>
+                    <input type="text" id="favorite-genre" name="favorite-genre" required><br><br>
+
+                    <label for="recommendation">Рекомендация книги:</label><br>
+                    <input type="text" id="recommendation" name="recommendation" required><br><br>
+
+                    <input type="submit" value="Отправить">
+                </form>
+            </section>
+
+            <section class="reader-recommendations-section">
+                <h2>Наши читатели рекомендуют:</h2>
+                <div class="image-hover-container">
+                    <div class="image-pair">
+                        <img src="images\books1.jpg" alt="Рекомендация 1" class="main-image">
+                        <img src="images\books2.jpg" alt="Рекомендация 1 альтернативная" class="hover-image">
+                    </div>
+                    <div class="image-pair">
+                        <img src="images\books3.jpg" alt="Рекомендация 2" class="main-image">
+                        <img src="images\books4.jpg" alt="Рекомендация 2 альтернативная" class="hover-image">
+                    </div>
+                    <div class="image-pair">
+                        <img src="images\books5.jpg" alt="Рекомендация 3" class="main-image">
+                        <img src="images\books6.jpg" alt="Рекомендация 3 альтернативная" class="hover-image">
+                    </div>
+                    <div class="image-pair">
+                        <img src="images\books7.jpg" alt="Рекомендация 4" class="main-image">
+                        <img src="images\books8.jpg" alt="Рекомендация 4 альтернативная" class="hover-image">
+                    </div>
+                    <div class="image-pair">
+                        <img src="images\books9.jpg" alt="Рекомендация 5" class="main-image">
+                        <img src="images\books10.jpg" alt="Рекомендация 5 альтернативная" class="hover-image">
+                    </div>
+                    <div class="image-pair">
+                        <img src="images\books11.jpg" alt="Рекомендация 6" class="main-image">
+                        <img src="images\books12.jpg" alt="Рекомендация 6 альтернативная" class="hover-image">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Газетно-журнальное издание Литературный трибун</p>
+    </footer>
+
+    <script src='script.js'></script>
+</body>
+</html>

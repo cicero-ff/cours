@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Газетно-журнальное издание Литературный трибун</title>
+    </head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="images\logo.svg" alt="Логотип Литературный трибун" class="logo">
+                <div class="site-title">
+                    <h1>Литературный трибун</h1>
+                    <p class="subtitle">новое поколение читательского обзора</p>
+                </div>
+            </div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="main-nav nav">
+                <div class="nav-buttons">
+                    <a href="page1.html">Главная</a>
+                    <a href="page2.html">Книги</a>
+                    <a href="page3.html">Авторы</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="menu-overlay"></div>
+
+<main>
+    <div class="main-content">
+        <section class="news-section">
+            <h2>Новости мира книг</h2>
+            <div class="news-container">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news1.jpg" alt="Новость 1">
+                    </div>
+                    <div class="news-content">
+                        <h3>Эфир: Елена Кондрацкая и Анастасия Гор</h3>
+                        <p>О темном фэнтези и обаятельных героях</p>
+                        <span class="news-date">Сегодня</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news2.jpg" alt="Новость 2">
+                    </div>
+                    <div class="news-content">
+                        <h3>Тихая роскошь и стиль old money</h3>
+                        <p>Как книги серии «Жемчужина» стали символом безупречного вкуса</p>
+                        <span class="news-date">Вчера</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news3.jpg" alt="Новость 3">
+                    </div>
+                    <div class="news-content">
+                        <h3>Freedom выпустит новый цикл</h3>
+                        <p>Мары Вульф</p>
+                        <span class="news-date">2 дня назад</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news4.jpg" alt="Новость 4">
+                    </div>
+                    <div class="news-content">
+                        <h3>«Горе от ума» получит новую экранизацию</h3>
+                        <p>Подробности о съемках и актерском составе</p>
+                        <span class="news-date">3 дня назад</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news5.jpg" alt="Новость 5">
+                    </div>
+                    <div class="news-content">
+                        <h3>Режиссер Юрий Быков экранизирует «Воскресение»</h3>
+                        <p>Новая экранизация классического романа Льва Толстого</p>
+                        <span class="news-date">4 дня назад</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="images/news6.jpg" alt="Новость 6">
+                    </div>
+                    <div class="news-content">
+                        <h3>«Ассистентка Злодея» выйдет на русском языке</h3>
+                        <p>Полное издание популярной серии книг</p>
+                        <span class="news-date">5 дней назад</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="right-column">
+            <section class="quote-section">
+                <h2>Цитата дня</h2>
+                <blockquote>
+                    "Книги - это корабли мысли, странствующие по волнам времени и бережно несущие свой драгоценный груз от поколения к поколению." - Фрэнсис Бэкон
+                </blockquote>
+            </section>
+
+            <section class="form-section">
+                <h2>Анкета читателя</h2>
+                <form id="reader-anket">
+                    <label for="name">Ваше имя:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="favorite-book">Ваша любимая книга:</label><br>
+                    <input type="text" id="favorite-book" name="favorite-book" required><br><br>
+
+                    <label for="reading-frequency">Как часто Вы читаете?</label><br>
+                    <select id="reading-frequency" name="reading-frequency">
+                        <option value="ежедневно">Ежедневно</option>
+                        <option value="несколько раз в неделю">Несколько раз в неделю</option>
+                        <option value="несколько раз в месяц">Несколько раз в месяц</option>
+                        <option value="редко">Редко</option>
+                    </select><br><br>
+
+                    <label for="last-question">Пользуетесь ли Вы Литературным трибуном?</label><br>
+                    <select id="last-question" name="last-question">
+                        <option value="да">Да</option>
+                        <option value="нет">Нет</option>
+                    </select><br><br>
+
+                    <input type="submit" value="Отправить">
+                </form>
+            </section>
+        </div>
+    </div>
+</main>
+
+    <footer>
+        <p>&copy; 2025 Газетно-журнальное издание Литературный трибун</p>
+    </footer>
+
+    <script src='script.js'></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,1449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 0 20px;
+    background-color: #494238;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    background-color: rgba(170, 133, 91, 0.751);
+    padding: 15px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(170, 133, 91, 0.95);
+    padding: 10px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.site-title {
+    text-align: left;
+    position: relative;
+    max-width: 100%;
+}
+
+.site-title h1 {
+    font-size: 2.2em;
+    color: #fff;
+    margin-bottom: 5px;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.site-title .subtitle {
+    font-size: 1.1em;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.site-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+/* Линия под кнопками навигации */
+.nav-line {
+    height: 2px; /* толщина линии */
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    margin-top: 5px; /* отступ сверху */
+}
+
+/* Добавляем отступ для основного контента */
+main {
+    margin-top: 150px; /* Фиксированный отступ для всех устройств */
+    width: 100%;
+}
+
+/* Стили для гамбургер-меню */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu span:nth-child(1) { top: 0; }
+.hamburger-menu span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger-menu span:nth-child(3) { bottom: 0; }
+
+/* Анимация гамбургера в крестик */
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+}
+
+/* Стили для навигации */
+nav.nav {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    padding-top: 15px;
+    position: relative;
+}
+
+.nav-buttons::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic;
+    background-color: #8C7A65;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.nav-buttons a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    opacity: 1;
+}
+
+.nav-buttons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.nav-buttons a:hover::before {
+    left: 100%;
+}
+
+.nav-buttons a:hover {
+    background-color: #9D8B76;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content styles */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Стиль для overlay */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* News section */
+.news-section {
+    background-color: #FFE3C0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.news-section h2 {
+    text-align: center;
+    color: #5b412d !important;
+    margin-bottom: 30px;
+    font-size: 2em;
+    position: relative;
+    padding-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.news-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #5b412d, transparent);
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:nth-child(1) { animation-delay: 0.1s; }
+.news-card:nth-child(2) { animation-delay: 0.2s; }
+.news-card:nth-child(3) { animation-delay: 0.3s; }
+.news-card:nth-child(4) { animation-delay: 0.4s; }
+.news-card:nth-child(5) { animation-delay: 0.5s; }
+.news-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.news-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.1);
+}
+
+.news-content {
+    padding: 20px;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+.news-content p {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.news-date {
+    display: inline-block;
+    background: #8C7A65;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.news-card:hover .news-date {
+    background: #9D8B76;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    main {
+        margin-top: 180px; /* Увеличиваем отступ для мобильных устройств */
+    }
+
+    .news-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    nav.nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(170, 133, 91, 0.95);
+        flex-direction: column;
+        padding: 100px 20px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    nav.nav.active {
+        right: 0;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 0;
+    }
+
+    .nav-buttons::before {
+        display: none;
+    }
+
+    .nav-buttons a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+        margin: 5px 0;
+    }
+
+    .nav-buttons a::after,
+    .nav-buttons a::before {
+        display: none;
+    }
+
+    /* Стили для скролла */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Анимация при скролле */
+    header.scrolled .hamburger-menu {
+        transform: scale(0.8);
+    }
+
+    header.scrolled nav {
+        padding-top: 60px;
+    }
+
+    .video-container {
+        margin: 0 -20px;
+        border-radius: 0;
+    }
+
+    .newsletter-section {
+        margin: 20px -20px;
+        border-radius: 0;
+        padding: 20px 15px;
+    }
+
+    #newsletter-form {
+        padding: 0 10px;
+    }
+
+    #newsletter-form input[type="email"] {
+        padding: 10px;
+    }
+
+    #newsletter-form input[type="submit"] {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 5px 0;
+    }
+
+    main {
+        margin-top: 200px; /* Еще больше отступ для маленьких экранов */
+    }
+
+    .header-content {
+        padding: 10px;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .site-title h1 {
+        font-size: 1.4em;
+        line-height: 1.2;
+    }
+
+    .site-title .subtitle {
+        font-size: 0.8em;
+        line-height: 1.2;
+    }
+
+    .news-section h2,
+    .quote-section h2,
+    .form-section h2,
+    .bestsellers-section h2,
+    .recommendation-form-section h2,
+    .reader-recommendations-section h2,
+    .popular-authors-section h2,
+    .interviews-section h2,
+    .newsletter-section h2 {
+        font-size: 1.4em;
+        padding: 10px;
+    }
+
+    .news-card {
+        margin: 0;
+    }
+
+    .bestsellers-container {
+        grid-template-columns: 1fr;
+    }
+
+    .book img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .image-pair {
+        width: 100%;
+        height: 250px;
+    }
+
+    nav.nav {
+        width: 100%;
+        max-width: none;
+    }
+
+    .nav-buttons a {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .video-container {
+        padding-bottom: 75%; /* Более квадратное соотношение для мобильных */
+    }
+
+    .newsletter-section {
+        padding: 15px 10px;
+    }
+
+    #newsletter-form label {
+        font-size: 1em;
+    }
+
+    #newsletter-form input[type="email"] {
+        font-size: 0.9em;
+    }
+
+    #newsletter-form input[type="submit"] {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Сделать навигацию статичной и видимой */
+    nav.nav {
+        position: static; /* или relative */
+        width: auto;
+        height: auto;
+        background-color: transparent; /* убрать фон или оставить по желанию */
+        flex-direction: row; /* горизонтальный режим */
+        padding: 0;
+        transition: none;
+    }
+}
+
+/* Стили для второй страницы */
+.main-content-second {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.bestsellers-section {
+    background-color: rgba(131, 102, 67, 0.401);
+    padding: 25px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.bestsellers-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 350px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.book {
+    flex: 0 0 220px;
+    min-width: 220px;
+    max-width: 220px;
+}
+
+.book img {
+    width: 220px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lower-sections {
+    display: grid;
+    grid-template-columns: 2.2fr 2.8fr;
+    gap: 30px;
+    width: 100%;
+    padding: 0 25px;
+}
+
+.recommendation-form-section {
+    background-color: rgba(125, 91, 52, 0.64);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #CAAB88;
+    display: flex;
+    flex-direction: column;
+}
+
+.reader-recommendations-section {
+    padding: 25px;
+    background-color: #CAAB88;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgba(125, 91, 52, 0.64);
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+    .book {
+        flex: 0 0 200px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+    
+    .book img {
+        width: 200px;
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lower-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .book {
+        flex: 0 0 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+    
+    .book img {
+        width: 180px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bestsellers-section,
+    .recommendation-form-section,
+    .reader-recommendations-section {
+        padding: 15px;
+    }
+    
+    .book {
+        flex: 0 0 160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+    
+    .book img {
+        width: 160px;
+        height: 220px;
+    }
+}
+
+/* Right column styles */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form section */
+.form-section {
+    background-color: rgba(238, 178, 108, 0.763);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 80px;
+    border: 2px solid rgba(155, 118, 76, 0.8);
+    position: relative;
+}
+
+.form-section h2 {
+    background-color: #9B764C;
+    padding: 15px 30px;
+    margin: -20px -20px 20px -20px;
+    color: #fff;
+    font-size: 1.4em;
+    font-style: italic;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+.form-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+#reader-anket {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+#reader-anket label {
+    margin-bottom: 1px;
+    font-size: 1em;
+}
+
+#reader-anket input,
+#reader-anket select {
+    padding: 3px;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+#reader-anket input[type="submit"] {
+    padding: 4px 8px;
+    margin-top: 3px;
+    font-size: 1em;
+}
+
+/* Quote section */
+.quote-section {
+    background-color: #C9965A;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.quote-section h2 {
+    background-color: #AF8D64;
+    padding: 8px;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+blockquote {
+    font-style: italic;
+    padding: 20px;
+    background-color: rgba(201, 150, 90, 0.77);
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
+/* Footer styles */
+footer {
+    background-color: rgba(170, 133, 91, 0.751);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+footer p {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Стили для блока новостей */
+.news-section {
+    margin-top: 20px;
+}
+
+.news-section h2 {
+    font-size: 24px;
+}
+
+.news p {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+}
+
+/* Стили для блока цитаты дня */
+.quote-section {
+    margin-top: 20px; 
+    font-style: italic; 
+ }
+ 
+ /* Стили для блока анкеты читателя */
+ .survey-section {
+    margin-top: 20px; 
+ }
+
+ .survey-section form {
+    display: flex; 
+    flex-direction: column; 
+ }
+ 
+ .survey-section label, .survey-section input, .survey-section select {
+    margin-bottom: 10px; 
+ }
+
+ /* Адаптивный дизайн */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block; 
+        margin-bottom: 10px; 
+    }
+ }
+
+/* Стили для блока бестселлеров */
+.bestsellers-section {
+    max-width: 1200px;
+    margin: 5px auto 30px auto;   
+    background-color: rgba(131, 102, 67, 0.401);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.bestsellers-section h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+    font-size: 1.3em;
+}
+
+.bestsellers-container {
+    display: flex;
+    gap: 25px;
+    padding: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 350px;
+    justify-content: flex-start;
+}
+
+.bestsellers-container::-webkit-scrollbar {
+    display: none;
+}
+
+.book {
+    flex: 0 0 220px;
+    min-width: 220px;
+    max-width: 220px;
+}
+
+.book:nth-child(n+5) {
+    flex: 0 0 220px;
+    min-width: 220px;
+    max-width: 220px;
+}
+
+.book img {
+    width: 220px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.book img:hover {
+    transform: scale(1.05);
+}
+
+/* Обновляем стили для нижних блоков */
+.lower-sections {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.2fr 2.8fr;
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.recommendation-form-section {
+    background-color: rgba(125, 91, 52, 0.64);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #CAAB88;
+    display: flex;
+    flex-direction: column;
+}
+
+#recommendation-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 100%;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-hover-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+    width: 100%;
+    padding: 0;
+}
+
+.image-pair {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-pair:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-pair img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    padding: 5px;
+}
+
+.image-pair:hover img {
+    transform: scale(1.05);
+}
+
+.image-pair .hover-image {
+    opacity: 0;
+}
+
+.image-pair:hover .main-image {
+    opacity: 0;
+}
+
+.image-pair:hover .hover-image {
+    opacity: 1;
+}
+
+/* Обновляем медиа-запросы для адаптивности */
+@media screen and (max-width: 1200px) {
+    .bestsellers-section,
+    .lower-sections {
+        max-width: 95%;
+    }
+    
+    .book {
+        flex: 0 0 200px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+    
+    .book:nth-child(n+5) {
+        flex: 0 0 200px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+    
+    .book img {
+        width: 200px;
+        height: 280px;
+    }
+    
+    .image-pair {
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lower-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .book {
+        flex: 0 0 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+    
+    .book:nth-child(n+5) {
+        flex: 0 0 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+    
+    .book img {
+        width: 180px;
+        height: 250px;
+    }
+    
+    .image-hover-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .image-pair {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bestsellers-section,
+    .lower-sections {
+        padding: 10px;
+    }
+    
+    .book {
+        flex: 0 0 160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+    
+    .book:nth-child(n+5) {
+        flex: 0 0 160px;
+        min-width: 160px;
+        max-width: 160px;
+    }
+    
+    .book img {
+        width: 160px;
+        height: 220px;
+    }
+    
+    .image-hover-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .image-pair {
+        height: 220px;
+    }
+}
+
+/* Стили для блока популярных авторов */
+.popular-authors-section {
+    max-width: 100%;
+    margin: 5px auto;
+    background-color: rgba(255, 227, 192, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.authors-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.author-card {
+    flex: 1;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.author-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.author-card:hover img {
+    transform: scale(1.1); /* Увеличиваем фото при наведении */
+}
+
+.author-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Добавляем тень при наведении */
+}
+
+.author-info {
+    padding: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ae9a82;
+}
+
+.author-info h3 {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Обновляем медиа-запросы для адаптивности */
+@media screen and (max-width: 1024px) {
+    .popular-authors-section {
+        max-width: 90%;
+        margin: 40px auto; /* Сохраняем отступ на меньших экранах */
+    }
+
+    .authors-container {
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .authors-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .author-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .author-card {
+        flex: 0 0 100%;
+    }
+}
+
+/* Стили для блока интервью */
+.interviews-section {
+    background-color: rgba(183, 124, 57, 0.536);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 400px; /* Увеличиваем минимальную высоту */
+    display: flex;
+    flex-direction: column;
+}
+
+.interviews-section h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Стили для блока подписки */
+.newsletter-section {
+    background-color: rgba(80, 59, 34, 0.44);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 400px; /* Увеличиваем минимальную высоту */
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(236, 197, 153, 0.414); /* Добавляем окантовку */
+}
+
+.newsletter-section h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 15px 30px;
+    display: inline-block;
+    border: 2px solid rgba(236, 197, 153, 0.414);
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#recommendation-form label {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+#newsletter-form input[type="email"] {
+    padding: 12px; /* Увеличиваем высоту поля ввода */
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em; /* Увеличиваем размер текста */
+    width: 100%;
+}
+
+#newsletter-form input[type="submit"] {
+    padding: 12px 30px; /* Увеличиваем размер кнопки */
+    background-color: #8C7A65;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    font-size: 1.1em; /* Увеличиваем размер текста */
+    transition: all 0.3s ease;
+}
+
+#newsletter-form input[type="submit"]:hover {
+    background-color: #9D8B76;
+    transform: translateY(-2px);
+}
+
+/* Общие стили для заголовков секций */
+.news-section h2,
+.quote-section h2,
+.form-section h2,
+.bestsellers-section h2,
+.recommendation-form-section h2,
+.reader-recommendations-section h2,
+.popular-authors-section h2,
+.interviews-section h2,
+.newsletter-section h2 {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Градиентная линия для светлых секций */
+.news-section h2::after,
+.popular-authors-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #5b412d, transparent);
+}
+
+/* Градиентная линия для темных секций */
+.quote-section h2::after,
+.form-section h2::after,
+.bestsellers-section h2::after,
+.recommendation-form-section h2::after,
+.reader-recommendations-section h2::after,
+.interviews-section h2::after,
+.newsletter-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+/* Стили для затемнения фона при открытом меню */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* Обновленные стили для адаптивности */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .news-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bestsellers-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .authors-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .lower-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .image-hover-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .popular-authors-section,
+    .lower-sections {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .interviews-section,
+    .newsletter-section {
+        min-height: 350px; /* Немного уменьшаем высоту на меньших экранах */
+    }
+
+    .author-card img {
+        height: 300px; /* Уменьшаем высоту фото на меньших экранах */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lower-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .interviews-section,
+    .newsletter-section {
+        min-height: 300px; /* Еще меньше высота для мобильных */
+    }
+
+    .author-card img {
+        height: 250px; /* Еще меньше высота для мобильных */
+    }
+}
+
+/* Удаляем старые стили гамбургер-меню, так как используем новую адаптивную навигацию */
+.hamburger {
+    display: none;
+}
+
+/* Общие адаптивные стили */
+.main-content,
+.bestsellers-section,
+.popular-authors-section,
+.lower-sections {
+    max-width: 100%;
+    padding: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Медиа-запрос для мобильной версии */
+@media screen and (max-width: 768px) {
+    header {
+        position: relative;
+        
+        &.header-hidden {
+            transform: none;
+        }
+    }
+    
+    main {
+        margin-top: 20px;
+    }
+}
+
+/* Обновляем медиа-запросы для адаптивности */
+@media screen and (max-width: 1024px) {
+    .bestsellers-section,
+    .lower-sections {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .bestsellers-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lower-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .bestsellers-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bestsellers-container {
+        grid-template-columns: 1fr;
+    }
+}

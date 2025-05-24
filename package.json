@@ -1,0 +1,22 @@
+{
+  "name": "literary-tribune",
+  "version": "1.0.0",
+  "description": "Газетно-журнальное издание Литературный трибун",
+  "scripts": {
+    "sass": "sass --watch styles/main.scss:styles.css",
+    "build": "sass styles/main.scss:styles.css --style compressed && postcss styles.css -o styles.css --use autoprefixer"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "IE 11"
+  ]
+} 
